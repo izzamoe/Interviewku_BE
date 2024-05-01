@@ -1,0 +1,24 @@
+# docker-compose.yml
+version: '3.9'
+
+services:
+  app:
+    image: "oven/bun"
+    # override default entrypoint allows us to do `bun install` before serving
+    entrypoint: []
+    # execute bun install before we start the dev server in watch mode
+    command: "/bin/sh -c 'bun install && bun run dev:migrate'"
+    # expose the right ports
+    ports: ["4000:4000"]
+    # setup a host mounted volume to sync changes to the container
+    volumes: ["./:/home/bun/app"]
+  db:
+    image: mysql:8.0  # Consider a specific, supported version for stability
+    restart: unless-stopped  # Restart automatically on failures
+    environment:
+      MYSQL_ROOT_PASSWORD: 11  # Replace with a secure password
+      MYSQL_DATABASE: dbInterview
+      MYSQL_USER: izzam
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"  # Disable for enhanced security
+    volumes:
+      - ["./db:/var/lib/mysql"]  # Persistent storage for database data

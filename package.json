@@ -1,0 +1,30 @@
+{
+  "name": "prisma-app",
+  "module": "index.js",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prisma": "^5.13.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.0.2",
+    "@faker-js/faker": "^8.4.1",
+    "@prisma/client": "^5.13.0",
+    "dotenv": "^16.4.5",
+    "elysia": "^1.0.15",
+    "express": "^4.19.2"
+  },
+  "prisma": {
+    "seed": "bun prisma/seed.js"
+  },
+  "scripts": {
+    "dev": "bun --watch index.js",
+    "build": "bun build index.js",
+    "start": "NODE_ENV=production bun index.ts",
+    "test": "bun test",
+    "dev:migrate": "prisma migrate deploy && bun --watch index.js"
+  }
+}
