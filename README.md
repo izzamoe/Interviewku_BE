@@ -33,7 +33,7 @@ Aplikasi Interviewku adalah Aplikasi yang dibuat untuk teknikal test. Berikut in
 4. Setelah konfigurasi selesai, jalankan perintah berikut untuk melakukan migrasi basis data menggunakan Prisma:
 
    ```bash
-   prisma bun prisma migrate dev
+   bunx prisma migrate dev
    ```
 
 Perintah ini akan menjalankan migrasi basis data pada lingkungan pengembangan (dev) menggunakan Prisma. Setelah migrasi selesai, aplikasi akan siap digunakan.
